@@ -1,25 +1,27 @@
-# FeedHenry Hello World MBaaS Server
+# Wordnet MBaaS Server
 
-This is a blank 'hello world' FeedHenry MBaaS. Use it as a starting point for building your APIs. 
+Provides dictionary service for words.
+Scrapes <http://wordnetweb.princeton.edu/perl/webwn>.
 
-# Group Hello World API
+For demo purposes only! You should not scrape any web site in real world!
 
-# hello [/hello]
+# Group Wordnet API
 
-'Hello world' endpoint.
+# definition [/definition]
 
-## hello [POST] 
+'Wordnet definition' endpoint.
 
-'Hello world' endpoint.
+## definition [/definition?{word}]
 
-+ Request (application/json)
-    + Body
-            {
-              "hello": "world"
-            }
+'Wordnet definition' endpoint. Returns the definition of the given word.
+If there are multiple, returns the first noun definition.
+
++ Parameters
+
+    + word: apple (string) - A URL encoded word
 
 + Response 200 (application/json)
     + Body
             {
-              "msg": "Hello world"
+              "definition": "fruit with red or yellow or green skin and sweet to tart crisp whitish flesh"
             }
