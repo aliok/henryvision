@@ -29,7 +29,7 @@
     "mockery-next": "2.0.1-3",
     "sinon": "~1.17.3"
   },
-  "main": "application.js",
+  "main": "server.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha test/*.js",
     "lint": "./node_modules/.bin/jshint .",
