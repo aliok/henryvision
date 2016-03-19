@@ -8,7 +8,7 @@ var fs = require("fs");
 
 var expect = chai.expect;
 
-var scraper;;
+var scraper;
 
 describe("wordnet-page-scraper", function () {
 
