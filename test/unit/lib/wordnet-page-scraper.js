@@ -3,18 +3,44 @@
 var chai = require("chai");
 chai.use(require("chai-as-promised"));
 var Promise = require("bluebird");
+var mockery = require("mockery-next");
+var fs = require("fs");
 
 var expect = chai.expect;
 
-var scraper = require('../../../lib/wordnet-page-scraper');
+var scraper;;
 
 describe("wordnet-page-scraper", function () {
 
-    beforeEach(function (done) {
+    before(function (done) {
+        mockery.enable({
+            warnOnReplace: false,
+            warnOnUnregistered: false,
+            useCleanCache: true
+        });
+
+        // we shouldn't actually go and do an HTTP request to Wordnet in unittests.
+        // we should mock it.
+        //
+        // we cannot just intercept and mock the HTTP requests because of `request-promise` module.
+        // we need to mock the entire `request-promise` module to do that.
+        // see https://github.com/request/request-promise/issues/55
+        //
+        // this means, return the contents of a file.
+        // if word to search for is 'coffee', return the contents of 'wornet_coffee.html'.
+        mockery.registerMock('request-promise', function (options) {
+            var response = fs.readFileSync(__dirname + '/wordnet_' + options.qs.s + ".html", 'utf8');
+            return Promise.resolve(response.trim());
+        });
+
+        scraper = require('../../../lib/wordnet-page-scraper');
+
         done();
     });
 
-    afterEach(function (done) {
+    after(function (done) {
+        mockery.disable();
+        mockery.deregisterAll();
         done();
     });
 
@@ -87,7 +113,7 @@ describe("wordnet-page-scraper", function () {
         });
 
         it("it should return empty array when nothing found", function (done) {
-            Promise.resolve("asdasdasd")
+            Promise.resolve("pluralizr")
                 .then(scraper)
                 .then(function(results){
                     expect(results).to.be.an('array')
