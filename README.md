@@ -1,3 +1,5 @@
+FORMAT: 1A
+
 # Wordnet MBaaS Server
 
 Provides dictionary service for words.
@@ -7,17 +9,16 @@ For demo purposes only! You should not scrape any web site in real world!
 
 # Group Wordnet API
 
-# definition [/definition]
+## definition [/definition]
 
 'Wordnet definition' endpoint.
 
-## definition [/definition?{word}]
+### /definition{?word} [GET]
 
-'Wordnet definition' endpoint. Returns the definition of the given word.
+Returns the definition of the given word.
 If there are multiple, returns the first noun definition.
 
 + Parameters
-
     + word: apple (string) - A URL encoded word
 
 + Response 200 (application/json)
