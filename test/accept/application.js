@@ -88,14 +88,14 @@ describe("/definition", function () {
 });
 
 function startServer(done) {
-    var app = require("../../application");
+    var app = require("../../server");
     app.start()
         .then(done)
         .catch(done);
 }
 
 function stopServer(done) {
-    var app = require("../../application");
+    var app = require("../../server");
     app.stop()
         .then(done)
         .catch(done);
