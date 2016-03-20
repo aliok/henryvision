@@ -24,10 +24,10 @@ Google Cloud Vision is used.
 
 + Response 200 (application/json)
     + Body
-            {"suggestions":[
+            [
                 {"description":"produce","score":0.97960633},
                 {"description":"plant","score":0.92011058},
                 {"description":"food","score":0.82908809},
                 {"description":"vegetable","score":0.81842089},
-                {"description":"red onion","score":0.8}]
-            }
+                {"description":"red onion","score":0.8}
+            ]
