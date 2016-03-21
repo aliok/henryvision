@@ -43,7 +43,7 @@ function henryVisionRoute() {
         return Promise.resolve(suggestionList)
           .then(buildText)
           .then(function (text) {
-            res.send({text: text});
+            res.send({text: text, suggestions:suggestionList});
           });
       })
       .catch(function (err) {
