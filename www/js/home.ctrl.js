@@ -1,8 +1,8 @@
 angular.module('app').controller('HomeCtrl', HomeController);
 
-HomeController.$inject = ['CameraService', 'CloudService'];
+HomeController.$inject = ['CameraService', 'CloudService', '$log'];
 
-function HomeController(CameraService, CloudService) {
+function HomeController(CameraService, CloudService, $log) {
   var vm = this;
 
   vm.images = [];
@@ -33,7 +33,7 @@ function HomeController(CameraService, CloudService) {
         image.inProgress = false;
       })
       .catch(function (err) {
-        log.error(err);
+        $log.error(err);
         if (err.message) {
           image.error = err.message;
         }

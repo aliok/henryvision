@@ -1,9 +1,9 @@
 angular.module('app')
   .factory('CloudService', CloudService);
 
-CloudService.$inject = ['$q'];
+CloudService.$inject = ['$q', '$log'];
 
-function CloudService($q) {
+function CloudService($q, $log) {
   return {
     getTextForImage: function (imageData) {
       return $q(function (fulfill, reject) {
@@ -16,10 +16,10 @@ function CloudService($q) {
         };
 
         $fh.cloud(params, function (data) {
-          log.info("Received data:", data);
+          $log.info("Received data:", data);
           return fulfill(data);
         }, function (err) {
-          log.error(err);
+          $log.error(err);
           return reject(err);
         });
       });

@@ -92,7 +92,6 @@
       "cordova": false,
       "StatusBar": false,
       "$fh": false,
-      "Camera": false,
-      "log": false
+      "Camera": false
     }
 }

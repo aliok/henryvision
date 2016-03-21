@@ -2,14 +2,15 @@ angular.module('app')
   .factory('CameraService', CameraService);
 
 
-CameraService.$inject = ['$q', '$http'];
+CameraService.$inject = ['$q', '$http', '$log'];
 
-function CameraService($q, $http) {
+function CameraService($q, $http, $log) {
   return {
     getPicture: function () {
 
       // use the sample image if we're not in Cordova
       if (!window.cordova) {
+        $log.info("Returning sample image");
         return $http({
           method: 'GET',
           url: 'img/faulkner.txt'
@@ -24,6 +25,8 @@ function CameraService($q, $http) {
 
       return $q(function (fulfill, reject) {
         if (navigator && navigator.camera && navigator.camera.getPicture) {
+          $log.info("Starting camera");
+
           var cameraOptions = {
             quality: 75,
             destinationType: Camera.DestinationType.DATA_URL,

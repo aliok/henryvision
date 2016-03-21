@@ -1,8 +1,18 @@
 angular.module('app').controller('SettingsCtrl', SettingsController);
 
-SettingsController.$inject = [];
+SettingsController.$inject = ['SettingsService', '$log'];
 
-function SettingsController() {
+function SettingsController(settingsService, $log) {
   var vm = this;
+
+  vm.ttsEnabled = settingsService.isTTSEnabled();
+
+  vm.ttsChanged = ttsChanged;
+
+
+  function ttsChanged(){
+    $log.info("ttsChanged to ", vm.ttsEnabled);
+    settingsService.setTTSEnabled(vm.ttsEnabled);
+  }
 
 }
