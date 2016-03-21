@@ -10,20 +10,21 @@ TODOs:
 
 RHMAP offers Node 0.10.0 as latest version (because of Openshift I think). However, Ionic requires Node 4.x.
 Thus, I used <https://github.com/tj/n>.
+However, it is a bit messy. Won't document it here.
 
 ##### Wordnet service:
 
-    npm install -g npm@~2
+    cd wordnet-service
     npm install
-    n 0.10.0 wordnet-service/server.js
+    node server.js
 
 Available at <http://127.0.0.1:8001>.
 
 ##### Vision service:
 
-    npm install -g npm@~2
+    cd vision-service
     npm install
-    GOOGLE_VISION_SERVICE_API_KEY="<api key you got from Google Developer console>" n 0.10.0 vision-service/server.js
+    GOOGLE_VISION_SERVICE_API_KEY="<api key you got from Google Developer console>" node server.js
 
 Available at <http://127.0.0.1:8002>.
 
@@ -31,22 +32,27 @@ Available at <http://127.0.0.1:8002>.
 
 Make sure wordnet and vision services are running first!
 
-    npm install -g npm@~2
+    cd orchestrate
     npm install
-    FH_SERVICE_MAP='{"nvssok5suaw3fgf3w7fppt3a":"http://127.0.0.1:8002", "jndexd635x46k6etfvwvtu7t":"tp:127.0.0.1:8001"}' n 0.10.0 orchestrate/server.js
+    FH_SERVICE_MAP='{"nvssok5suaw3fgf3w7fppt3a":"http://127.0.0.1:8002", "jndexd635x46k6etfvwvtu7t":"http://127.0.0.1:8001"}' node server.js
 
 Available at <http://127.0.0.1:8010>.
 
 ##### Cordova app:
 
     n 4.4.0
-    npm install -g npm@~3
     npm install -g cordova ionic
     cd cordova
+    npm install
     bower install
-    ionic build
-    ionic run android           # runs on device / emaulator
-    ionic serve --live-reload   # runs on browser
+
+    # run on device / emaulator
+    ionic platform add android
+    ionic build android
+    ionic run android
+
+    # run on browser
+    ionic serve --live-reload
 
 Connection to cloud doesn't work when you run on device. I didn't invest time in fixing this.
 
