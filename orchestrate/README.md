@@ -17,5 +17,12 @@ Returns a sentence describing the thing on the picture that is sent.
 + Response 200 (application/json)
     + Body
             {
-              "text": "It is a produce."
+                "text":"It is a produce. Produce is fresh fruits and vegetable grown for the market.",
+                "suggestions":[
+                    {"description":"produce","score":0.97960633},
+                    {"description":"plant","score":0.92011058},
+                    {"description":"food","score":0.82908809},
+                    {"description":"vegetable","score":0.81842089},
+                    {"description":"red onion","score":0.8}
+                ]
             }
