@@ -1,6 +1,6 @@
 # HenryVision
 
-A demo with Red Hat Mobile Application Platform, Google Cloud Vision API.
+A demo with Red Hat Mobile Application Platform and Google Cloud Vision API.
 You take a photo and the mobile application tells you what it is.
 
 Here is a short demo:
