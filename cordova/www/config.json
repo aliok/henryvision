@@ -1,0 +1,37 @@
+{
+  "plugins": [
+    {
+      "id": "cordova-plugin-device",
+      "version": "latest"
+    },
+    {
+      "id": "cordova-plugin-console",
+      "version": "latest"
+    },
+    {
+      "id": "cordova-plugin-whitelist",
+      "version": "latest"
+    },
+    {
+      "id": "cordova-plugin-splashscreen",
+      "version": "latest"
+    },
+    {
+      "id": "cordova-plugin-statusbar",
+      "version": "latest"
+    },
+    {
+      "id": "ionic-plugin-keyboard",
+      "version": "latest"
+    },
+    {
+      "id": "cordova-plugin-camera",
+      "version": "latest"
+    },
+    {
+      "id": "org.apache.cordova.speech.speechsynthesis",
+      "version": "1.0.0",
+      "url": "https://github.com/macdonst/SpeechSynthesisPlugin#master"
+    }
+  ]
+}
