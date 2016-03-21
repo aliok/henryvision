@@ -31,7 +31,9 @@ function buildText(visionSuggestionList) {
   }
 }
 
-function buildTextSingle(trustLevel, desc) {
+function buildTextSingle(desc, trustLevel) {
+  winston.debug("buildTextSingle", [trustLevel, desc]);
+  
   return Promise.resolve(desc)
     .then(definition)
     .then(function (definition) {
@@ -45,6 +47,8 @@ function buildTextSingle(trustLevel, desc) {
 }
 
 function buildTextDouble(desc0, trustLevel0, desc1, trustLevel1) {
+  winston.debug("buildTextDouble", [desc0, trustLevel0, desc1, trustLevel1]);
+
   return Promise.resolve(desc0)
     .then(definition)
     .then(function (definition) {
@@ -106,7 +110,7 @@ function trustLevel(score) {
 // too dumb. returns "an university" or "a hour".
 // this is a demo, so, never mind.
 function a(word) {
-  var first = word[0].toLowerCase();
+  var first = word.charAt(0).toLowerCase();
   if (["a", "e", "i", "o", "u"].indexOf(first) !== -1) {
     return "an " + word;
   }

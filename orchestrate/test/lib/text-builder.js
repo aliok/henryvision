@@ -44,14 +44,57 @@ describe("wordnet-page-scraper", function () {
         });
     });
 
+    describe("when there is one word", function () {
+        it("should generate sentence for score > 0.95", function (done) {
+            var suggestions = [
+                {description: "pet", score: 0.98}
+            ];
+
+            expect(buildText(suggestions)).to.eventually.deep
+                .equal("That is a pet. Pet is something cool.")
+                .notify(done);
+        });
+
+        it("should generate sentence for 0.95 > score > 0.8", function (done) {
+            var suggestions = [
+                {description: "pet", score: 0.90}
+            ];
+
+            expect(buildText(suggestions)).to.eventually.deep
+                .equal("That should be a pet. Pet is something cool.")
+                .notify(done);
+        });
+
+        it("should generate sentence for 0.8 > score > 0.6", function (done) {
+            var suggestions = [
+                {description: "pet", score: 0.65}
+            ];
+
+            expect(buildText(suggestions)).to.eventually.deep
+                .equal("That is probably a pet. Pet is something cool.")
+                .notify(done);
+        });
+
+        it("should generate sentence for score < 0.6", function (done) {
+            var suggestions = [
+                {description: "pet", score: 0.5}
+            ];
+
+            expect(buildText(suggestions)).to.eventually.deep
+                .equal("That might be a pet. Pet is something cool.")
+                .notify(done);
+        });
+
+    });
+
     describe("when at least one word have > 0.95", function () {
         it("should return 2 words with certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.98414},
-                {description: "dog", score: 0.97904623},
-                {description: "mammal", score: 0.96168429},
-                {description: "animal", score: 0.95276582},
-                {description: "vertebrate", score: 0.89599329}
+                {description: "pet", score: 0.98},
+                {description: "dog", score: 0.97},
+                {description: "mammal", score: 0.96},
+                {description: "animal", score: 0.95},
+                {description: "vertebrate", score: 0.89}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
@@ -61,11 +104,11 @@ describe("wordnet-page-scraper", function () {
 
         it("should return 2 words one with certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.98414},
-                {description: "dog", score: 0.87904623},
-                {description: "mammal", score: 0.86168429},
-                {description: "animal", score: 0.85276582},
-                {description: "vertebrate", score: 0.79599329}
+                {description: "pet", score: 0.98},
+                {description: "dog", score: 0.87},
+                {description: "mammal", score: 0.86},
+                {description: "animal", score: 0.85},
+                {description: "vertebrate", score: 0.79}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
@@ -78,11 +121,11 @@ describe("wordnet-page-scraper", function () {
     describe("when at least one word have > 0.8 but all have < 0.95", function () {
         it("should return 2 words with certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.93414},
-                {description: "dog", score: 0.92904623},
-                {description: "mammal", score: 0.96168429},
-                {description: "animal", score: 0.95276582},
-                {description: "vertebrate", score: 0.89599329}
+                {description: "pet", score: 0.93},
+                {description: "dog", score: 0.92},
+                {description: "mammal", score: 0.96},
+                {description: "animal", score: 0.95},
+                {description: "vertebrate", score: 0.89}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
@@ -92,11 +135,11 @@ describe("wordnet-page-scraper", function () {
 
         it("should return 2 words one with certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.93414},
-                {description: "dog", score: 0.79904623},
-                {description: "mammal", score: 0.78168429},
-                {description: "animal", score: 0.77276582},
-                {description: "vertebrate", score: 0.74599329}
+                {description: "pet", score: 0.93},
+                {description: "dog", score: 0.79},
+                {description: "mammal", score: 0.78},
+                {description: "animal", score: 0.77},
+                {description: "vertebrate", score: 0.74}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
@@ -109,11 +152,11 @@ describe("wordnet-page-scraper", function () {
     describe("when at least one word have > 0.6 but all have < 0.8", function () {
         it("should return 2 words with certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.73414},
-                {description: "dog", score: 0.72904623},
-                {description: "mammal", score: 0.71168429},
-                {description: "animal", score: 0.70276582},
-                {description: "vertebrate", score: 0.69599329}
+                {description: "pet", score: 0.73},
+                {description: "dog", score: 0.72},
+                {description: "mammal", score: 0.71},
+                {description: "animal", score: 0.70},
+                {description: "vertebrate", score: 0.69}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
@@ -123,11 +166,11 @@ describe("wordnet-page-scraper", function () {
 
         it("should return 2 words one with certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.73414},
-                {description: "dog", score: 0.52904623},
-                {description: "mammal", score: 0.51168429},
-                {description: "animal", score: 0.50276582},
-                {description: "vertebrate", score: 0.59599329}
+                {description: "pet", score: 0.73},
+                {description: "dog", score: 0.52},
+                {description: "mammal", score: 0.51},
+                {description: "animal", score: 0.50},
+                {description: "vertebrate", score: 0.59}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
@@ -140,11 +183,11 @@ describe("wordnet-page-scraper", function () {
     describe("when but all have scores < 0.6", function () {
         it("should return 2 words with no certainty", function (done) {
             var suggestions = [
-                {description: "pet", score: 0.53414},
-                {description: "dog", score: 0.52904623},
-                {description: "mammal", score: 0.51168429},
-                {description: "animal", score: 0.50276582},
-                {description: "vertebrate", score: 0.49599329}
+                {description: "pet", score: 0.53},
+                {description: "dog", score: 0.52},
+                {description: "mammal", score: 0.51},
+                {description: "animal", score: 0.50},
+                {description: "vertebrate", score: 0.49}
             ];
 
             expect(buildText(suggestions)).to.eventually.deep
