@@ -1,10 +1,25 @@
-TODOs:
+# HenryVision
 
-- Blog post
-- Video
-    - Embed in Git repo
-    - Embed in blog post
-- About section in settings
+A demo with Red Hat Mobile Application Platform, Google Cloud Vision API.
+You take a photo and the mobile application tells you what it is.
+
+Here is a short demo:
+
+[![video](http://img.youtube.com/vi/npUtwnmuKEQ/0.jpg)](http://www.youtube.com/watch?v=npUtwnmuKEQ)
+
+Read more in [my blog](http://www.aliok.com.tr/projects/2016-03-21-henryvision.html) about this demo.
+
+### Missing things
+
+I didn't do some necessary things because this is a small demo.
+
+- Node clustering: someone needs to apply clustering as in : <https://github.com/aliok/rambo-li-char-customization-backend/blob/master/app.js>
+- Better tests (I've only written tests for the most problematic algorthmic stuff)
+
+
+# License
+
+Apache 2.0
 
 ### Local development
 
