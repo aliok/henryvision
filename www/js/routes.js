@@ -1,4 +1,4 @@
-angular.module('app.routes', [])
+angular.module('app')
 
   .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -9,7 +9,7 @@ angular.module('app.routes', [])
         views: {
           'side-menu': {
             templateUrl: 'templates/home.html',
-            controller: 'HenryVisionCtrl',
+            controller: 'HomeCtrl',
             controllerAs: 'vm'
           }
         }
@@ -20,7 +20,8 @@ angular.module('app.routes', [])
         views: {
           'side-menu': {
             templateUrl: 'templates/settings.html',
-            controller: 'settingsCtrl'
+            controller: 'SettingsCtrl',
+            controllerAs: 'vm'
           }
         }
       })

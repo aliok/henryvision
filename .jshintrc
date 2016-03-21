@@ -90,6 +90,9 @@
     "globals"       : {        // additional predefined global variables
       "angular": false,
       "cordova": false,
-      "StatusBar": false
+      "StatusBar": false,
+      "$fh": false,
+      "Camera": false,
+      "log": false
     }
 }

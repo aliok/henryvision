@@ -1,7 +1,8 @@
 {
-  "name": "cordova",
+  "private": true,
+  "name": "HenryVision",
   "version": "1.1.1",
-  "description": "cordova: An Ionic project",
+  "description": "HenryVision",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
