@@ -1,11 +1,18 @@
 <ion-view title="Settings">
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <form class="list">
-            <ion-toggle toggle-class="toggle-positive" name="ttsEnabled"
-              ng-model="vm.ttsEnabled" ng-change="vm.ttsChanged()">TTS</ion-toggle>
-        </form>
-        <div>
-            <p>ABOUT</p>
-        </div>
-    </ion-content>
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <form class="list">
+      <ion-toggle toggle-class="toggle-positive" name="ttsEnabled"
+                  ng-model="vm.ttsEnabled" ng-change="vm.ttsChanged()">TTS
+      </ion-toggle>
+    </form>
+    <div class="list card">
+      <div class="item item-body">
+        None of the taken photos are stored. Not on your device; not on the cloud.
+      </div>
+      <div class="item item-body">
+        This is a small demo of RHMAP. For more information, visit
+        <a href="http://www.aliok.com.tr/projects/2016-03-21-henryvision.html">this blog post</a>.
+      </div>
+    </div>
+  </ion-content>
 </ion-view>
