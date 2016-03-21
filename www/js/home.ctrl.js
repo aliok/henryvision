@@ -3,9 +3,9 @@
 
   angular.module('app').controller('HomeCtrl', HomeController);
 
-  HomeController.$inject = ['CameraService', 'CloudService', '$log'];
+  HomeController.$inject = ['CameraService', 'CloudService', 'SettingsService', 'TTSService', '$log'];
 
-  function HomeController(CameraService, CloudService, $log) {
+  function HomeController(cameraService, cloudService, settingsService,ttsService, $log) {
     var vm = this;
 
     vm.images = [];
@@ -20,7 +20,7 @@
         error: undefined
       };
 
-      CameraService.getPicture()
+      cameraService.getPicture()
         .then(function (imageData) {
           image.src = "data:image/png;base64," + imageData;
 
@@ -29,11 +29,17 @@
 
           return imageData;
         })
-        .then(CloudService.getTextForImage)
+        .then(cloudService.getTextForImage)
         .then(function (response) {
           image.text = response ? response.text : undefined;
           image.status = undefined;
           image.inProgress = false;
+          return image.text;
+        })
+        .then(function(text){
+          if(settingsService.isTTSEnabled()){
+            ttsService.speak(text);
+          }
         })
         .catch(function (err) {
           $log.error(err);
