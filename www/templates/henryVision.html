@@ -1,19 +1,24 @@
 <ion-view title="HenryVision">
-    <ion-content overflow-scroll="true" padding="true" class="has-header">
-        <button id="henryVision-button1" class="button button-positive  button-block icon-left ion-camera">Take a photo</button>
-        <div class="list card">
-            <div class="item item-divider">Photo @ 2016 01 10 10:25</div>
-            <div class="item item-body">
-                <div style="line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
-                    <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-                </div>
-                <div>
-                    <p>50%</p>
-                </div>
-                <div>
-                    <p>It is a produce.</p>
-                </div>
-            </div>
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <button id="henryVision-button1" class="button button-positive  button-block icon-left ion-camera" ng-click="takePhoto()">Take a photo</button>
+    <div class="list card" ng-repeat="image in images">
+      <div class="item item-divider">Image @ {{image.date | date : 'medium'}}</div>
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{image.src}}">
+        <div ng-show="image.status">
+          <p>{{image.status}}</p>
         </div>
-    </ion-content>
+        <p ng-show="image.text"><i class="icon ion-chevron-right"></i> {{image.text}}</p>
+      </div>
+      <div class="item item-text-wrap" ng-show="image.error || image.inProgress">
+        <div ng-show="image.inProgress">
+          <div class="subdued" style="text-align: center;">
+            <ion-spinner></ion-spinner>
+            <span style="font-size: 75%;">Uploading...</span>
+          </div>
+        </div>
+        <p ng-show="image.error"><i class="icon ion-alert"></i> {{image.error}}</p>
+      </div>
+    </div>
+  </ion-content>
 </ion-view>
