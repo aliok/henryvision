@@ -1,9 +1,11 @@
 angular.module('app.controllers', ['app.services'])
 
-  .controller('henryVisionCtrl', ['$scope', '$q', 'Camera', 'HenryVision', function ($scope, $q, Camera, HenryVision) {
-    $scope.images = [];
+  .controller('HenryVisionCtrl', ['$scope', '$q', 'Camera', 'HenryVision', function ($scope, $q, Camera, HenryVision) {
+    var vm = this;
 
-    $scope.takePhoto = function () {
+    vm.images = [];
+
+    vm.takePhoto = function () {
 
       var image = {
         date: new Date(),
@@ -16,8 +18,9 @@ angular.module('app.controllers', ['app.services'])
       Camera.getPicture()
         .then(function (imageData) {
           image.src = "data:image/png;base64," + imageData;
-          // add to beginning
-          $scope.images.unshift(image);
+
+          // add to beginning of the array
+          vm.images.unshift(image);
 
           return imageData;
         })
@@ -36,6 +39,7 @@ angular.module('app.controllers', ['app.services'])
           else {
             image.error = "An error occurred.";
           }
+          image.inProgress = false;
         });
     };
 

@@ -1,0 +1,32 @@
+<ion-view title="HenryVision">
+  <ion-content overflow-scroll="true" padding="true" class="has-header">
+    <button class="button button-positive button-block icon-left ion-camera"
+            ng-click="vm.takePhoto()">Take a photo
+    </button>
+
+    <div class="list card" ng-repeat="image in vm.images">
+
+      <div class="item item-divider">Image @ {{image.date | date : 'medium'}}</div>
+
+      <div class="item item-body">
+        <img class="full-image" ng-src="{{image.src}}">
+        <div ng-show="image.status">
+          <p>{{image.status}}</p>
+        </div>
+        <p ng-show="image.text"><i class="icon ion-chevron-right"></i> {{image.text}}</p>
+      </div>
+
+      <div ng-show="image.error || image.inProgress">
+        <a ng-show="image.inProgress" class="item item-icon-left">
+          <ion-spinner class="icon"></ion-spinner>
+          <span style="font-size: 75%;">Uploading...</span>
+        </a>
+        <a ng-show="image.error" class="item item-icon-left assertive">
+          <i class="icon ion-alert"></i>
+          {{image.error}}
+        </a>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

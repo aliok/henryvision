@@ -1,43 +1,37 @@
 angular.module('app.routes', [])
 
-.config(function($stateProvider, $urlRouterProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
-    
-  
+    $stateProvider
 
-      .state('menu.henryVision', {
-    url: '/home',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/henryVision.html',
-        controller: 'henryVisionCtrl'
-      }
-    }
-  })
+      .state('menu.home', {
+        url: '/home',
+        views: {
+          'side-menu': {
+            templateUrl: 'templates/home.html',
+            controller: 'HenryVisionCtrl',
+            controllerAs: 'vm'
+          }
+        }
+      })
 
-  .state('menu.settings', {
-    url: '/settings',
-    views: {
-      'side-menu21': {
-        templateUrl: 'templates/settings.html',
-        controller: 'settingsCtrl'
-      }
-    }
-  })
+      .state('menu.settings', {
+        url: '/settings',
+        views: {
+          'side-menu': {
+            templateUrl: 'templates/settings.html',
+            controller: 'settingsCtrl'
+          }
+        }
+      })
 
-  .state('menu', {
-    url: '/side-menu21',
-    templateUrl: 'templates/menu.html',
-    abstract:true
-  })
+      .state('menu', {
+        url: '/side-menu',
+        templateUrl: 'templates/menu.html',
+        abstract: true
+      });
 
-$urlRouterProvider.otherwise('/side-menu21/home')
+    $urlRouterProvider.otherwise('/side-menu/home');
 
-  
 
-});
+  });
