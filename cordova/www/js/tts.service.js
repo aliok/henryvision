@@ -27,8 +27,8 @@
         // u.lang = "en";
 
         u.volume = "1.0";
-        u.rate = 0.1; // 0.1 to 10
-        u.pitch = 1; //0 to 2
+        // u.rate = 0.1; // 0.1 to 10
+        // u.pitch = 1; //0 to 2
 
         window.speechSynthesis.speak(u);
       }
