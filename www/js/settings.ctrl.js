@@ -1,18 +1,23 @@
-angular.module('app').controller('SettingsCtrl', SettingsController);
+(function () {
+  "use strict";
 
-SettingsController.$inject = ['SettingsService', '$log'];
+  angular.module('app').controller('SettingsCtrl', SettingsController);
 
-function SettingsController(settingsService, $log) {
-  var vm = this;
+  SettingsController.$inject = ['SettingsService', '$log'];
 
-  vm.ttsEnabled = settingsService.isTTSEnabled();
+  function SettingsController(settingsService, $log) {
+    var vm = this;
 
-  vm.ttsChanged = ttsChanged;
+    vm.ttsEnabled = settingsService.isTTSEnabled();
+
+    vm.ttsChanged = ttsChanged;
 
 
-  function ttsChanged(){
-    $log.info("ttsChanged to ", vm.ttsEnabled);
-    settingsService.setTTSEnabled(vm.ttsEnabled);
+    function ttsChanged() {
+      $log.info("ttsChanged to ", vm.ttsEnabled);
+      settingsService.setTTSEnabled(vm.ttsEnabled);
+    }
+
   }
 
-}
+})();

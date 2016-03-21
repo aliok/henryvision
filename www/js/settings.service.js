@@ -1,19 +1,23 @@
-angular.module('app')
-  .factory('SettingsService', SettingsService);
+(function () {
+  "use strict";
 
-var TTS_ENABLED_KEY = "TTS_ENABLED";
+  angular.module('app')
+    .factory('SettingsService', SettingsService);
 
-SettingsService.$inject = ['localStorageService'];
+  var TTS_ENABLED_KEY = "TTS_ENABLED";
 
-function SettingsService(localStorageService) {
-  return {
-    setTTSEnabled: function (ttsEnabled) {
-      localStorageService.set(TTS_ENABLED_KEY, ttsEnabled);
-    },
+  SettingsService.$inject = ['localStorageService'];
 
-    isTTSEnabled: function () {
-      return localStorageService.get(TTS_ENABLED_KEY);
-    }
-  };
+  function SettingsService(localStorageService) {
+    return {
+      setTTSEnabled: function (ttsEnabled) {
+        localStorageService.set(TTS_ENABLED_KEY, ttsEnabled);
+      },
 
-}
+      isTTSEnabled: function () {
+        return localStorageService.get(TTS_ENABLED_KEY);
+      }
+    };
+
+  }
+})();
