@@ -31,7 +31,8 @@
         })
         .then(cloudService.getTextForImage)
         .then(function (response) {
-          image.text = response ? response.text : undefined;
+          image.text = response.text;
+          image.suggestions = response.suggestions;
           image.status = undefined;
           image.inProgress = false;
           return image.text;

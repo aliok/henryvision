@@ -14,6 +14,12 @@
           <p>{{image.status}}</p>
         </div>
         <p ng-show="image.text"><i class="icon ion-chevron-right"></i> {{image.text}}</p>
+        <p ng-show="image.suggestions">
+          Suggestions:
+          <span ng-repeat="suggestion in image.suggestions">
+            {{ suggestion.description }}<span ng-if="!$last">,</span>
+          </span>
+        </p>
       </div>
 
       <div ng-show="image.error || image.inProgress">
