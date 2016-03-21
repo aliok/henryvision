@@ -3,7 +3,7 @@
 A demo with Red Hat Mobile Application Platform and Google Cloud Vision API.
 You take a photo and the mobile application tells you what it is.
 
-Here is a short demo:
+Here is a short video:
 
 [![video](http://img.youtube.com/vi/npUtwnmuKEQ/0.jpg)](http://www.youtube.com/watch?v=npUtwnmuKEQ)
 
